@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Splash_Screen.Views.NewPracticePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView Intent="Settings" HasUnevenRows="true">
+                <TableRoot>
+                    <TableSection Title="Number Range" TextColor="Black">
+                        <ViewCell>
+                            <StackLayout>
+                                <StackLayout VerticalOptions="Center">
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="2*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition/>
+                                        </Grid.ColumnDefinitions>
+                                        <Entry Placeholder="1"  Text ="{Binding Range1}" Keyboard="Numeric" x:Name="range1TextBox" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
+                                        <Label Grid.Column="1" Text=" - " HorizontalOptions="Center" VerticalOptions="Center" FontSize="50" FontAttributes="Bold"/>
+                                        <Entry Placeholder="100" Text="{Binding Range2}" Keyboard="Numeric" x:Name="range2TextBox" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
+                                    </Grid>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="Operation" TextColor="Black">
+                        <ViewCell>
+                            <StackLayout>
+                                <Picker Title="Select an Operation" TitleColor="Red" x:Name="operationSelector" >
+                                    <Picker.Items>
+                                        <x:String>Addition</x:String>
+                                        <x:String>Subtraction</x:String>
+                                        <x:String>Multiplication</x:String>
+                                        <x:String>Division</x:String>
+                                        <x:String>Squared</x:String>
+                                        <x:String>Cubed</x:String>
+                                        <x:String>Square Root</x:String>
+                                        <x:String>Cube Root</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button Text="Start" x:Name="StartButton" TextColor="White" BackgroundColor="Green" Clicked="StartButton_Clicked"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

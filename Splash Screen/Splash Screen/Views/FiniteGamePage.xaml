@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Splash_Screen.FiniteGamePage"
+             xmlns:local="clr-namespace:Splash_Screen.Views" 
+             NavigationPage.HasNavigationBar="False">
+    
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Key=backGroundColor1}">
+
+            <StackLayout Padding="10" VerticalOptions="Center"  >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="270"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackLayout Grid.Row="0" >
+                        <Frame BorderColor="Black" BackgroundColor="{StaticResource Key=backGroundColor2}">
+                            <Grid RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="2"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="2"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="2"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="2"/>
+                                </Grid.RowDefinitions>
+                                <!--SCORE SECTION-->
+                                <StackLayout  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" x:DataType="local:Game">
+                                    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="0,0,0,0"  BorderColor="Black" BackgroundColor="{StaticResource Key=backGroundColor3}"  >
+
+                                        <StackLayout HorizontalOptions="EndAndExpand" >
+                                            <StackLayout  Spacing="0" >
+
+                                                <Label Text="{Binding Score}" x:Name="userScore" FontSize="35" TextColor="White"/>
+                                            </StackLayout>
+
+                                            
+                                        </StackLayout>
+                                    </Frame>
+
+
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="2" >
+                                    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="1,1,1,1"   BorderColor="Black">
+                                        <StackLayout BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                            <StackLayout Spacing="0">
+                                                 <!--Timer-->
+                                            <ProgressBar x:Name="pb" Progress="{Binding ProgressBar}" ProgressColor="Green" ScaleY="3.7" />
+                                                <BoxView Color="Black" HeightRequest="1" />
+                                            </StackLayout>
+                                           <Label Text="{Binding Duration}" x:Name="timeLeftLabel" FontSize="18" TextColor="White"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+                                        </StackLayout>
+
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="4" >
+                                    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="1,1,1,1"  BorderColor="Black" BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                        <StackLayout Orientation="Horizontal">
+                                            <!--PROBLEM STREAK-->
+                                            <Label Text="{Binding Levels}" x:Name="ProblemsLeftLabel" FontSize="15" TextColor="Black"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                            <Label Text="-" FontSize="Caption" TextColor="White" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                            <Label Text="{Binding Problems}" FontSize="15" TextColor="Black"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+
+                                        </StackLayout>
+
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="6" >
+                                    <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="1,1,1,1"  BorderColor="Black" BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                            <!--EQUATION-->
+                                            <Label Text="{Binding Num1}" x:Name="num1" FontSize="25" TextColor="White"  />
+                                            <Label  Text="{Binding Operand}" x:Name="Operation" FontSize="25" TextColor="White" />
+                                            <Label  Text="{Binding Num2}" x:Name="num2" FontSize="25" TextColor="White" Padding="0,0,0,0"/>
+                                        </StackLayout>
+
+                                    </Frame>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+
+                    </StackLayout>
+                    <Frame Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="{StaticResource Key=backGroundColor2}" BorderColor="Black">
+                        <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                                <Grid.Resources>
+                                    <ResourceDictionary>
+                                        <Style TargetType="Button">
+                                            <Setter Property="FontSize" Value="25" />
+                                            <Setter Property="FontAttributes" Value="Bold" />
+                                            <Setter Property="BorderWidth" Value="4" />
+                                            <Setter Property="BorderColor" Value="Black" />
+                                        </Style>
+                                    </ResourceDictionary>
+                                </Grid.Resources>
+                                <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderColor="Black">
+                                    <Label Text="{Binding AnswerBox, Mode=TwoWay}" TextColor="Black"
+                   
+                                            FontSize="32"
+                                            x:Name="AnswerBox"
+                                            BackgroundColor="White"
+                                            LineBreakMode="HeadTruncation"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="End" />
+                                </Frame>
+
+
+                                <Button Text="CLEAR"
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    Clicked="OnClearButtonClicked" />
+
+                                <Button Text="&#x21E6;"
+                    Grid.Row="1" Grid.Column="2" x:Name="backspaceButton"
+                   Clicked="OnBackspaceButtonClicked" />
+
+                                <Button Text="7"
+                    Grid.Row="2" Grid.Column="0"
+                    Clicked="OnDigitButtonClicked" StyleId="7" />
+
+                                <Button Text="8"
+                    Grid.Row="2" Grid.Column="1"
+                   Clicked="OnDigitButtonClicked" StyleId="8"/>
+
+                                <Button Text="9"
+                    Grid.Row="2" Grid.Column="2"
+                    Clicked="OnDigitButtonClicked" StyleId="9" />
+
+                                <Button Text="4"
+                    Grid.Row="3" Grid.Column="0"
+                    Clicked="OnDigitButtonClicked" StyleId="4" />
+
+                                <Button Text="5"
+                    Grid.Row="3" Grid.Column="1"
+                    Clicked="OnDigitButtonClicked" StyleId="5" />
+
+                                <Button Text="6"
+                    Grid.Row="3" Grid.Column="2"
+                    Clicked="OnDigitButtonClicked" StyleId="6"/>
+
+                                <Button Text="1"
+                    Grid.Row="4" Grid.Column="0"
+                    Clicked="OnDigitButtonClicked" StyleId="1"/>
+
+                                <Button Text="2"
+                    Grid.Row="4" Grid.Column="1"
+                    Clicked="OnDigitButtonClicked" StyleId="2"/>
+
+                                <Button Text="3"
+                    Grid.Row="4" Grid.Column="2"
+                    Clicked="OnDigitButtonClicked" StyleId="3"/>
+
+                                <Button Text="0"
+                    Grid.Row="5" Grid.Column="0" 
+                    Clicked="OnDigitButtonClicked" StyleId="0"/>
+
+                                <Button Text="Submit"
+                    Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                     Command="{Binding SubmitButtonCommand}"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

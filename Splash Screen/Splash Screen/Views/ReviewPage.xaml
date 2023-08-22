@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             x:Class="Splash_Screen.Views.ReviewPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Button Text="New Game" x:Name="NewGameButton" Clicked="NewGameButton_Clicked" BackgroundColor="Cyan" />
+                <Button Text="Main Menu" x:Name="MainMenuButton" Clicked="MainMenuButton_Clicked" BackgroundColor="Aquamarine"/>
+            </StackLayout>
+            <ListView x:Name ="lstView" IsGroupingEnabled="true" GroupDisplayBinding="{Binding LongProblem}" GroupShortNameBinding="{Binding ShortProblem}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Problem}" Detail = "{Binding Answer}" d:Detail ="{Binding UserAnswer}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

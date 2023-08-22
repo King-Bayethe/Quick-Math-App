@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+           xmlns="http://xamarin.com/schemas/2014/forms"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:views="clr-namespace:Splash_Screen.Views" x:DataType="views:MyPopup"
+           xmlns:local="clr-namespace:Splash_Screen.Views"
+           x:TypeArguments="local:Game"
+           Size="300,300"
+           IsLightDismissEnabled="false"
+           x:Class="Splash_Screen.Views.MyPopup"
+           >
+    <StackLayout>
+        
+        <Label Text="Game Over" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="25" TextColor="Black"/>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
+            <Grid>
+
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Button Text="Retry" Clicked="RetryGameButton_Clicked" Grid.Row="0" Grid.Column="0"/>
+                <Button Text="New Game" Clicked="NewGameButton_Clicked" Grid.Row="0" Grid.Column="1"/>
+
+
+
+                <Label Text="Results" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="25" TextColor="Black" Grid.Row="1" Grid.ColumnSpan="2"/>
+                
+                <StackLayout Grid.Row="2" Grid.Column="0">
+                    <Label Text="000000"  x:Name="userScore"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="Black" />
+                    <Label Text="Score" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout Grid.Row="2" Grid.Column="1">
+                    <Label Text="000" x:Name="userTotalProblems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="Black" />
+                    <Label Text="Problems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="Black"/>
+                </StackLayout>
+
+                <Label Text="Highest Record" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="25" TextColor="Black" Grid.Row="3" Grid.ColumnSpan="2"/>
+                
+                <StackLayout Grid.Row="4" Grid.Column="0">
+                    <Label Text="000000" x:Name="HighestScore" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="Black" />
+                    <Label Text="Score" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="Black"/>
+                </StackLayout>
+                <StackLayout Grid.Row="4" Grid.Column="1">
+                    <Label Text="000" x:Name="HighestProblems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="Black" />
+                    <Label Text="Problems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="Black"/>
+                </StackLayout>
+
+
+                <Button Text="Main Menu" Clicked="MainMenuButton_Clicked" Grid.Row="5" Grid.ColumnSpan="2"/>
+            </Grid>
+        </StackLayout>
+    </StackLayout>
+    
+</xct:Popup>

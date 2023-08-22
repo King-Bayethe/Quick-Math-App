@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Splash_Screen.Views.InfiniteSetupPage" Title="Infinite">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Key=backGroundColor1}">
+            <StackLayout Padding="10" VerticalOptions="Center">
+                <Frame BackgroundColor="{StaticResource Key=backGroundColor2}">
+                    <TableView HasUnevenRows="true" >
+                        <TableRoot>
+                            <TableSection Title="RECORDS" TextColor="White">
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="0">
+                                                    <Label Text="----" x:Name="HighestScore" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="White" />
+                                                    <Label Text="Score" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="White" FontAttributes="Bold"/>
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Row="0" Grid.Column="1">
+                                                    <Label Text="----" x:Name="HighestProblems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="White" />
+                                                    <Label Text="Problems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="White" FontAttributes="Bold"/>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" Grid.Column="2">
+                                                    <Label Text="----" x:Name="BestMap" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="white" />
+                                                    <Label Text="Best Map" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="White" FontAttributes="Bold"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        </Frame>
+
+
+                                    </StackLayout>
+
+                                </ViewCell>
+                            </TableSection>
+                            <TableSection Title="MAP" TextColor="White">
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                            <Picker Title="Select an Operation" TitleColor="White" x:Name="mapSelector">
+                                                <Picker.Items>
+                                                    <x:String>Addition</x:String>
+                                                    <x:String>Subtraction</x:String>
+                                                    <x:String>Multiplication</x:String>
+                                                    <x:String>Division</x:String>
+                                                    <x:String>Squared</x:String>
+                                                    <x:String>Cubed</x:String>
+                                                    <x:String>Square Root</x:String>
+                                                    <x:String>Cube Root</x:String>
+                                                </Picker.Items>
+
+                                            </Picker>
+                                        </Frame>
+
+                                    </StackLayout>
+
+                                </ViewCell>
+                            </TableSection>
+                            <TableSection Title="DIFFICULTY" TextColor="White">
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                            <Picker Title="Select a Difficulty" TitleColor="White" x:Name="diffSelector">
+                                                <Picker.Items>
+                                                    <x:String>VERY EASY</x:String>
+                                                    <x:String>EASY</x:String>
+                                                    <x:String>NORMAL</x:String>
+                                                    <x:String>MEDIUM</x:String>
+                                                    <x:String>HARD</x:String>
+                                                    <x:String>VERY HARD</x:String>
+                                                </Picker.Items>
+                                            </Picker>
+                                        </Frame>
+
+                                    </StackLayout>
+
+                                </ViewCell>
+                            </TableSection>
+
+
+                        </TableRoot>
+                    </TableView>
+                </Frame>
+
+                <Button Text="Start" x:Name="FininiteStartButton" TextColor="White" BackgroundColor="Red" Clicked="InfiniteStartButton_Clicked"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

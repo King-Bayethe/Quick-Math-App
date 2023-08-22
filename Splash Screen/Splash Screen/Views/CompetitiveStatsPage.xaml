@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms" 
+             x:Class="Splash_Screen.Views.CompetitiveStatsPage"
+             
+             >
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#f5b82e"  Padding="10">
+            <RefreshView x:Name="scroll" Refreshing="OnRefresh">
+                <ScrollView>
+                    <StackLayout Margin="10" VerticalOptions="Center" BackgroundColor="#ffd131">
+                        
+                            
+                                <Label TextColor="White" FontSize="15" x:Name="chartTitle"/>
+                                <microcharts:ChartView x:Name="Chart1" HeightRequest="300" Chart="{Binding ExpChart}" />
+                           
+                        
+                    </StackLayout>
+                </ScrollView>
+            </RefreshView>
+            
+            
+            <StackLayout>
+                <Frame BackgroundColor="#ffd131" >
+
+                    <Picker Title="Select a Time frame" TitleColor="White" x:Name="timeframeFiniteSelector" SelectedIndexChanged="timeframeFiniteSelector_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>30 days</x:String>
+                            <x:String>3 months</x:String>
+                            <x:String>6 months</x:String>
+                            <x:String>Year</x:String>
+                            <x:String>All Time</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+                <Frame BackgroundColor="#ffd131" >
+
+                    <Picker Title="Select an Operation" TitleColor="White" x:Name="mapFiniteSelector" SelectedIndexChanged="mapSelector_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>Addition</x:String>
+                            <x:String>Subtraction</x:String>
+                            <x:String>Multiplication</x:String>
+                            <x:String>Division</x:String>
+                            <x:String>Squared</x:String>
+                            <x:String>Cubed</x:String>
+                            <x:String>Square Root</x:String>
+                            <x:String>Cube Root</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+                <Frame BackgroundColor="#ffd131" >
+
+                    <Picker Title="Select a Level" TitleColor="White" x:Name="levelFiniteSelector" SelectedIndexChanged="levelFiniteSelector_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>Addition</x:String>
+                            <x:String>Subtraction</x:String>
+                            <x:String>Multiplication</x:String>
+                            <x:String>Division</x:String>
+                            <x:String>Squared</x:String>
+                            <x:String>Cubed</x:String>
+                            <x:String>Square Root</x:String>
+                            <x:String>Cube Root</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+                <Frame BackgroundColor="#ffd131" >
+
+                    <Picker Title="Select a Statistic" TitleColor="White" x:Name="statFiniteSelector" SelectedIndexChanged="statFiniteSelector_SelectedIndexChanged">
+                        <Picker.Items>
+                            <x:String>Score</x:String>
+                            <x:String>Duration</x:String>
+                            <x:String>Level</x:String>
+                        </Picker.Items>
+                        
+                    </Picker>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Splash_Screen.Views.PracticeSetupPage" Title="Practice">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Key=backGroundColor1}">
+            <StackLayout Padding="10" VerticalOptions="Center">
+                <Frame BackgroundColor="{StaticResource Key=backGroundColor2}">
+                    <TableView Intent="Settings" HasUnevenRows="true">
+                        <TableRoot>
+                            <TableSection Title="NUMBER RANGE" TextColor="White">
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                            <StackLayout VerticalOptions="Center">
+
+                                                <Grid>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="2*" />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <Entry Placeholder="1"  Text ="{Binding Range1}" Keyboard="Numeric" x:Name="range1TextBox" FontSize="50" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
+                                                    <Label Grid.Column="1" Text=" - " HorizontalOptions="Center" VerticalOptions="Center" FontSize="50" FontAttributes="Bold"/>
+                                                    <Entry Placeholder="100" Text="{Binding Range2}" Keyboard="Numeric" x:Name="range2TextBox" Grid.Column="2" FontSize="50" HorizontalOptions="Center" VerticalOptions="Center" FontAttributes="Bold"/>
+                                                </Grid>
+                                            </StackLayout>
+                                        </Frame>
+
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>
+                            <TableSection Title="OPERATION" TextColor="White">
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                            <Picker Title="Select an Operation" TitleColor="White" x:Name="operationSelector" FontSize="30" TextColor="White">
+                                                <Picker.Items>
+                                                    <x:String>Addition</x:String>
+                                                    <x:String>Subtraction</x:String>
+                                                    <x:String>Multiplication</x:String>
+                                                    <x:String>Division</x:String>
+                                                    <x:String>Squared</x:String>
+                                                    <x:String>Cubed</x:String>
+                                                    <x:String>Square Root</x:String>
+                                                    <x:String>Cube Root</x:String>
+                                                </Picker.Items>
+                                            </Picker>
+                                        </Frame>
+
+                                    </StackLayout>
+
+                                </ViewCell>
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
+                </Frame>
+
+                <Button Text="Start" x:Name="PracticeStartButton" TextColor="White" BackgroundColor="Red" Clicked="PracticeStartButton_Clicked"/>
+
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

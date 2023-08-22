@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Splash_Screen.Views.NewGamePage"
+             xmlns:controls="clr-namespace:Splash_Screen.Controls">
+    <NavigationPage.TitleView >
+        <Label Text="New Game" FontSize="40" TextColor="white" HorizontalOptions="Center"/>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout Padding="10" VerticalOptions="Center">
+            <TableView HasUnevenRows="true" Grid.Column="0">
+                <TableRoot>
+                    <TableSection Title="MAP" TextColor="White">
+                        <ViewCell>
+                            <StackLayout>
+                                <Picker Title="Select an Operation" TitleColor="Red" x:Name="mapSelector">
+                                    <Picker.Items>
+                                        <x:String>Addition</x:String>
+                                        <x:String>Subtraction</x:String>
+                                        <x:String>Multiplication</x:String>
+                                        <x:String>Division</x:String>
+                                        <x:String>Squared</x:String>
+                                        <x:String>Cubed</x:String>
+                                        <x:String>Square Root</x:String>
+                                        <x:String>Cube Root</x:String>
+                                    </Picker.Items>
+                                </Picker>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </TableSection>
+                    <TableSection Title="LEVEL" TextColor="White">
+                        <ViewCell>
+                            <StackLayout>
+                                <controls:StepperWithEntry
+                HorizontalOptions="Center"
+                MaximumValue="{Binding MaximumValue}"
+                Text="{Binding Quantity}"
+                                    x:Name="levelSelector"
+                VerticalOptions="Center" />     
+                            </StackLayout>
+
+                        </ViewCell>
+                    </TableSection>
+                    
+
+                </TableRoot>
+            </TableView>
+            <Button Text="Start" x:Name="StartButton" TextColor="White" BackgroundColor="Green" Clicked="StartButton_Clicked"/>
+        </StackLayout>
+            
+    </ContentPage.Content>
+</ContentPage>

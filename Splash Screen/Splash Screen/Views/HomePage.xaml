@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Splash_Screen.Views.HomePage"
+             Title="Home">
+  <!--Pages can be added as references or inline-->
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Key = backGroundColor1}">
+            <StackLayout Padding="10" VerticalOptions="Center">
+
+                <Frame HasShadow="True" HeightRequest="150" BackgroundColor="{StaticResource Key=backGroundColor2}" >
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Competitive Stats" TextColor="White" FontSize="25" FontAttributes="Bold" />
+                        </StackLayout>
+
+                        <BoxView Color="white" HeightRequest="1"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Score:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" />
+                            <Label Text="000" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" x:Name="highscore_CS"/>
+                            <Label Text="Duration:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
+                            <Label Text="00:00:00" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="1" Grid.Column="1" x:Name="time_CS"/>
+                            <Label Text="Best Map:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="2" Grid.Column="0" />
+                            <Label Text="000" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="2" Grid.Column="1" x:Name="operation_CS"/>
+                            <Label Text="Level:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="3" Grid.Column="0" />
+                            <Label Text="000" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="3" Grid.Column="1" x:Name="level_CS" />
+
+
+
+                        </Grid>
+
+                    </StackLayout>
+                </Frame>
+                <Frame HasShadow="True" HeightRequest="150" BackgroundColor="{StaticResource Key=backGroundColor2}">
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Infinite Stats" TextColor="White" FontSize="25" FontAttributes="Bold" />
+                        </StackLayout>
+                        <BoxView Color="white" HeightRequest="1"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Text="Score:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" />
+                            <Label Text="000" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" x:Name="highscore_IS"/>
+                            <Label Text="Duration:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
+                            <Label Text="00:00:00" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="1" Grid.Column="1" x:Name="time_IS"/>
+                            <Label Text="Best Map:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="2" Grid.Column="0" />
+                            <Label Text="000" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="2" Grid.Column="1" x:Name="operation_IS"/>
+                            <Label Text="Level:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="3" Grid.Column="0" />
+                            <Label Text="000" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="3" Grid.Column="1" x:Name="level_IS" />
+
+                            <Label Text="Difficulty:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="0" Grid.Column="2" />
+                            <Label Text="000" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="0" Grid.Column="3" x:Name="difficulty_IS"/>
+                            <Label Text="Problems:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="1" Grid.Column="2" />
+                            <Label Text="000" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="1" Grid.Column="3" x:Name="problems_IS" />
+                            <Label Text="Streak:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="2" Grid.Column="2" />
+                            <Label Text="000" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="2" Grid.Column="3" x:Name="streak_IS" />
+                            <Label Text="Multiplier:" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="3" Grid.Column="2" />
+                            <Label Text="000" TextColor="White" FontSize="15" FontAttributes="Bold" Grid.Row="3" Grid.Column="3" x:Name="multiplier_IS"/>
+
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+                <Frame HasShadow="True" HeightRequest="150" BackgroundColor="{StaticResource Key=backGroundColor2}">
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Practice Stats" TextColor="White" FontSize="25" FontAttributes="Bold" />
+                        </StackLayout>
+
+                        <BoxView Color="white" HeightRequest="1"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content> 
+</ContentPage>

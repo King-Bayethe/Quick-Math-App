@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:Splash_Screen.Controls"
+             x:Class="Splash_Screen.Views.FiniteSetupPage" Title="Competitive">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="{StaticResource Key=backGroundColor1 }">
+            <StackLayout Padding="10" VerticalOptions="Center">
+            <Frame BackgroundColor="{StaticResource Key=backGroundColor2}">
+                <TableView HasUnevenRows="true" Grid.Column="0">
+                    <TableRoot>
+                        <TableSection Title="MAP" TextColor="White">
+                            <ViewCell>
+                                <StackLayout>
+                                    <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" >
+
+                                        <Picker Title="Select an Operation" TitleColor="White" x:Name="mapFiniteSelector">
+                                            <Picker.Items>
+                                                <x:String>Addition</x:String>
+                                                <x:String>Subtraction</x:String>
+                                                <x:String>Multiplication</x:String>
+                                                <x:String>Division</x:String>
+                                                <x:String>Squared</x:String>
+                                                <x:String>Cubed</x:String>
+                                                <x:String>Square Root</x:String>
+                                                <x:String>Cube Root</x:String>
+                                            </Picker.Items>
+                                        </Picker>
+                                    </Frame>
+                                </StackLayout>
+
+                            </ViewCell>
+                        </TableSection>
+                        <TableSection Title="LEVEL" TextColor="White">
+                            <ViewCell>
+                                <StackLayout>
+                                    <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                        <controls:StepperWithEntry
+                    HorizontalOptions="Center"
+                    MaximumValue="{Binding MaximumValue}"
+                    Text="{Binding Quantity}" 
+                                        x:Name="levelSelector"
+                    VerticalOptions="Center" />
+                                    </Frame>
+
+                                </StackLayout>
+
+                            </ViewCell>
+                        </TableSection>
+
+
+                    </TableRoot>
+                </TableView>
+            </Frame>
+
+            <Button Text="Start" x:Name="StartButton" TextColor="White" BackgroundColor="Red" Clicked="FiniteStartButton_Clicked"/>
+        </StackLayout>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>
