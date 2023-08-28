@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Splash_Screen.Views.StatisticsPage">
+    <NavigationPage.TitleView>
+        <Picker Title="Select an Operation" TitleColor="{StaticResource Key=textColor}" x:Name="mapStatsSelector" SelectedIndexChanged="mapStatsSelector_SelectedIndexChanged">
+            <Picker.Items>
+                <x:String>Addition</x:String>
+                <x:String>Subtraction</x:String>
+                <x:String>Multiplication</x:String>
+                <x:String>Division</x:String>
+                <x:String>Squared</x:String>
+                <x:String>Cubed</x:String>
+                <x:String>Square Root</x:String>
+                <x:String>Cube Root</x:String>
+            </Picker.Items>
+
+        </Picker>
+    </NavigationPage.TitleView>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            
+            <StackLayout>
+                <ListView x:Name="listView"
+                        Margin="20"
+                        ItemSelected="OnListItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Margin="20,0,0,0"
+                                 Orientation="Horizontal"
+                                 HorizontalOptions="FillAndExpand">
+
+                                    <Label Text="{Binding Score}" TextColor="Black"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="20"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="StartAndExpand" />
+                                    <Label Text="{Binding Problems}" TextColor="Black"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="20"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="CenterAndExpand" />
+                                    <Label Text="{Binding Duration}" TextColor="Black"
+                                        VerticalTextAlignment="Center"
+                                        FontSize="20"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="EndAndExpand" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

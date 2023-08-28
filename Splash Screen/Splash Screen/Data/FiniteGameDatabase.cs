@@ -80,9 +80,16 @@ namespace Splash_Screen.Data
         {
             return Database.Table<RecordFiniteGame>().Where(i => i.ID == id).FirstOrDefaultAsync();
         }
+        public Task<RecordFiniteGame> GetGameAsync(int id)
+        {
+            return Database.Table<RecordFiniteGame>().Where(i => i.ID == id).FirstOrDefaultAsync();
+        }
+        //GAMES OF THIS OPERATION ONLY
+        public Task<List<RecordFiniteGame>> GetAllGamesWithOperationAsync(string operation)
+        {
+            return Database.QueryAsync<RecordFiniteGame>("SELECT * FROM [RecordFiniteGame] WHERE [Operation] = " + operation);
+        }
 
-        
 
-        
     }
 }

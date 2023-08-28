@@ -10,50 +10,75 @@ namespace Splash_Screen.Data
 {
     public class InfiniteGameDatabase
     {
-        static SQLiteAsyncConnection Database;
+        private readonly SQLiteAsyncConnection Database;
 
-        public static readonly AsyncLazy<InfiniteGameDatabase> Instance = new AsyncLazy<InfiniteGameDatabase>(async () =>
+        public InfiniteGameDatabase(string dbPath)
         {
-            var instance = new InfiniteGameDatabase();
-            CreateTableResult result = await Database.CreateTableAsync<RecordInfiniteGame>();
-            return instance;
-        });
-
-        public InfiniteGameDatabase()
-        {
-            Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+            Database = new SQLiteAsyncConnection(dbPath);
+            Database.CreateTableAsync<RecordInfiniteGame>();
         }
-
-        public Task<List<RecordInfiniteGame>> GetItemsAsync()
+        public Task<List<RecordInfiniteGame>> GetGamesAsync()
         {
             return Database.Table<RecordInfiniteGame>().ToListAsync();
         }
+        //GAMES OF THIS DIFFICULTY ONLY
+        /*public Task<List<RecordInfiniteGame>> GetAllGamesWithDifficultyAsync(string difficulty)
+        {
 
-        public Task<List<RecordInfiniteGame>> GetItemsNotDoneAsync()
+        }*/
+
+        public Task<int> SaveGameAsync(RecordInfiniteGame game)
+        {
+            return Database.InsertAsync(game);
+        }
+
+        public Task<int> DeleteItemAsync(RecordInfiniteGame game)
+        {
+            return Database.DeleteAsync(game);
+        }
+
+        public Task<List<RecordInfiniteGame>> GetQueryAsync(string timeFrame, string operation, string level)
+        {
+
+            DateTime date;
+            switch (timeFrame)
+            {
+
+                case "30 Days":
+                    date = DateTime.Now.AddDays(-30);
+                    break;
+                case "3 Months":
+                    date = DateTime.Now.AddMonths(-3);
+                    break;
+                case "6 Months":
+                    date = DateTime.Now.AddMonths(-6);
+                    break;
+
+                case "9 Months":
+                    date = DateTime.Now.AddMonths(-9);
+                    break;
+                case "1 Year":
+                    date = DateTime.Now.AddYears(-1);
+                    break;
+                case "All Time":
+                    date = DateTime.Now.AddYears(-100);
+                    break;
+                default:
+                    date = DateTime.Now.AddDays(-30);
+                    break;
+
+            }
+            string dtNow = DateTime.Now.ToString("yyyy-MM-dd");
+            string dtPast = date.ToString("yyyy-MM-dd");
+            return Database.QueryAsync<RecordInfiniteGame>("SELECT * FROM RecordInfiniteGame WHERE Date BETWEEN " + dtPast + " AND " + dtNow + " AND WHERE Map = " + operation + " AND WHERE Level = " + level);
+        }
+        public Task<List<RecordInfiniteGame>> GetLevelAsync(string operation)
         {
             return Database.QueryAsync<RecordInfiniteGame>("SELECT * FROM [RecordInfiniteGame] WHERE [Done] = 0");
         }
-
         public Task<RecordInfiniteGame> GetItemAsync(int id)
         {
             return Database.Table<RecordInfiniteGame>().Where(i => i.ID == id).FirstOrDefaultAsync();
-        }
-
-        public Task<int> SaveItemAsync(RecordInfiniteGame item)
-        {
-            if (item.ID != 0)
-            {
-                return Database.UpdateAsync(item);
-            }
-            else
-            {
-                return Database.InsertAsync(item);
-            }
-        }
-
-        public Task<int> DeleteItemAsync(RecordInfiniteGame item)
-        {
-            return Database.DeleteAsync(item);
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Splash_Screen.Views
         {
             On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
             InitializeComponent();
+            
             var home = new HomePage();
             var fSetup = new FiniteSetupPage();
             var iSetup = new InfiniteSetupPage();
@@ -35,7 +36,10 @@ namespace Splash_Screen.Views
             Children.Add(iSetup);
             Children.Add(pSetup);
             Children.Add(settings);
-            
+            Color bar = Color.FromRgb(0,24,204);
+            Color text = Color.FromRgb(94, 230, 0);
+            BarBackgroundColor = bar;
+            BarTextColor = text;
 
         }
         

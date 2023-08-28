@@ -30,26 +30,7 @@ namespace Splash_Screen
             this.BindingContext = finiteGame;
             
         }
-        /*private int problemsLeft;// problems left
-        private int problemsgotWrong;
-        private int problemsgotRight;
-        //DIFFICULTY
-        private double difficultyMultiplier;
-        private double mapScoreMultiplier;
-        private double increase_multiplier;
-        private double score_multiplier;
-        private double levelScoreMultiplier;
-        private double decrease_multiplier;
-            //SCORING
-        
-        private double points;
-        private int completion;
-        private int right;
-        private double TotalProblemValue;
-        private int timeLost;
-        private int highestStreak;
-        private double highestScoreMultiplier;
-        private int scoreLost;*/
+
        
         void OnDigitButtonClicked(object sender, EventArgs args)
         {

@@ -4,14 +4,33 @@
              x:Class="Splash_Screen.Views.InfiniteSetupPage" Title="Infinite">
     <ContentPage.Content>
         <StackLayout BackgroundColor="{StaticResource Key=backGroundColor1}">
+            <Frame BackgroundColor="{StaticResource Key=backGroundColor2}" >
+                <StackLayout>
+                    <Label  FontSize="45"
+                     VerticalOptions="EndAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     HorizontalTextAlignment="Center"
+                     FontFamily="PatrickFont" FontAttributes="Bold">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="QUICK " TextColor="{StaticResource Key=textColor}" />
+                                <Span Text="MATH" TextColor="{StaticResource Key=textColor}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Text="The Mastery of Speed" TextColor="{StaticResource Key=textColor}" FontSize="20" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+            </Frame>
             <StackLayout Padding="10" VerticalOptions="Center">
-                <Frame BackgroundColor="{StaticResource Key=backGroundColor2}">
+
+                <Frame BackgroundColor="{StaticResource Key=backGroundColor2}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}">
                     <TableView HasUnevenRows="true" >
                         <TableRoot>
-                            <TableSection Title="RECORDS" TextColor="White">
+                            <TableSection Title="RECORDS" TextColor="{StaticResource Key=textColor}">
                                 <ViewCell>
                                     <StackLayout>
-                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*"/>
@@ -23,17 +42,17 @@
                                                 </Grid.RowDefinitions>
 
                                                 <StackLayout Grid.Row="0" Grid.Column="0">
-                                                    <Label Text="----" x:Name="HighestScore" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="White" />
-                                                    <Label Text="Score" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="White" FontAttributes="Bold"/>
+                                                    <Label Text="----" x:Name="HighestScore" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="{StaticResource Key=textColor}" />
+                                                    <Label Text="Score" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="{StaticResource Key=textColor}" FontAttributes="Bold"/>
                                                 </StackLayout>
 
                                                 <StackLayout Grid.Row="0" Grid.Column="1">
-                                                    <Label Text="----" x:Name="HighestProblems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="White" />
-                                                    <Label Text="Problems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="White" FontAttributes="Bold"/>
+                                                    <Label Text="----" x:Name="HighestProblems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="{StaticResource Key=textColor}" />
+                                                    <Label Text="Problems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="{StaticResource Key=textColor}" FontAttributes="Bold"/>
                                                 </StackLayout>
                                                 <StackLayout Grid.Row="0" Grid.Column="2">
-                                                    <Label Text="----" x:Name="BestMap" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="white" />
-                                                    <Label Text="Best Map" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="White" FontAttributes="Bold"/>
+                                                    <Label Text="----" x:Name="BestMap" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="{StaticResource Key=textColor}" />
+                                                    <Label Text="Best Map" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="{StaticResource Key=textColor}" FontAttributes="Bold"/>
                                                 </StackLayout>
                                             </Grid>
                                         </Frame>
@@ -43,11 +62,11 @@
 
                                 </ViewCell>
                             </TableSection>
-                            <TableSection Title="MAP" TextColor="White">
+                            <TableSection Title="MAP" TextColor="{StaticResource Key=textColor}">
                                 <ViewCell>
                                     <StackLayout>
-                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
-                                            <Picker Title="Select an Operation" TitleColor="White" x:Name="mapSelector">
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}">
+                                            <Picker Title="Select an Operation" TitleColor="{StaticResource Key=textColor}" x:Name="mapSelector">
                                                 <Picker.Items>
                                                     <x:String>Addition</x:String>
                                                     <x:String>Subtraction</x:String>
@@ -66,11 +85,11 @@
 
                                 </ViewCell>
                             </TableSection>
-                            <TableSection Title="DIFFICULTY" TextColor="White">
+                            <TableSection Title="DIFFICULTY" TextColor="{StaticResource Key=textColor}">
                                 <ViewCell>
                                     <StackLayout>
-                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
-                                            <Picker Title="Select a Difficulty" TitleColor="White" x:Name="diffSelector">
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}">
+                                            <Picker Title="Select a Difficulty" TitleColor="{StaticResource Key=textColor}" x:Name="diffSelector">
                                                 <Picker.Items>
                                                     <x:String>VERY EASY</x:String>
                                                     <x:String>EASY</x:String>
@@ -92,7 +111,7 @@
                     </TableView>
                 </Frame>
 
-                <Button Text="Start" x:Name="FininiteStartButton" TextColor="White" BackgroundColor="Red" Clicked="InfiniteStartButton_Clicked"/>
+                <Button Text="Start" x:Name="FininiteStartButton" TextColor="{StaticResource Key=textColor}" BackgroundColor="{StaticResource Key=backGroundColor2}" Clicked="InfiniteStartButton_Clicked" CornerRadius="10"/>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

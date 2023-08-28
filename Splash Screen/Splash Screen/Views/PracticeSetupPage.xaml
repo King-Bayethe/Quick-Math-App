@@ -4,14 +4,32 @@
              x:Class="Splash_Screen.Views.PracticeSetupPage" Title="Practice">
     <ContentPage.Content>
         <StackLayout BackgroundColor="{StaticResource Key=backGroundColor1}">
+            <Frame BackgroundColor="{StaticResource Key=backGroundColor2}" >
+                <StackLayout>
+                    <Label  FontSize="45"
+                     VerticalOptions="EndAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     HorizontalTextAlignment="Center"
+                     FontFamily="PatrickFont" FontAttributes="Bold">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="QUICK " TextColor="{StaticResource Key=textColor}" />
+                                <Span Text="MATH" TextColor="{StaticResource Key=textColor}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Text="The Mastery of Speed" TextColor="{StaticResource Key=textColor}" FontSize="20" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+            </Frame>
             <StackLayout Padding="10" VerticalOptions="Center">
-                <Frame BackgroundColor="{StaticResource Key=backGroundColor2}">
+                <Frame BackgroundColor="{StaticResource Key=backGroundColor2}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}">
                     <TableView Intent="Settings" HasUnevenRows="true">
                         <TableRoot>
-                            <TableSection Title="NUMBER RANGE" TextColor="White">
+                            <TableSection Title="NUMBER RANGE" TextColor="{StaticResource Key=textColor}">
                                 <ViewCell>
                                     <StackLayout>
-                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}">
                                             <StackLayout VerticalOptions="Center">
 
                                                 <Grid>
@@ -33,11 +51,11 @@
                                     </StackLayout>
                                 </ViewCell>
                             </TableSection>
-                            <TableSection Title="OPERATION" TextColor="White">
+                            <TableSection Title="OPERATION" TextColor="{StaticResource Key=textColor}">
                                 <ViewCell>
                                     <StackLayout>
-                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
-                                            <Picker Title="Select an Operation" TitleColor="White" x:Name="operationSelector" FontSize="30" TextColor="White">
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}">
+                                            <Picker Title="Select an Operation" TitleColor="{StaticResource Key=textColor}" x:Name="operationSelector" FontSize="30" TextColor="{StaticResource Key=textColor}">
                                                 <Picker.Items>
                                                     <x:String>Addition</x:String>
                                                     <x:String>Subtraction</x:String>
@@ -59,7 +77,7 @@
                     </TableView>
                 </Frame>
 
-                <Button Text="Start" x:Name="PracticeStartButton" TextColor="White" BackgroundColor="Red" Clicked="PracticeStartButton_Clicked"/>
+                <Button Text="Start" x:Name="PracticeStartButton" TextColor="{StaticResource Key=textColor}" BackgroundColor="{StaticResource Key=backGroundColor2}" Clicked="PracticeStartButton_Clicked" CornerRadius="10"/>
 
             </StackLayout>
         </StackLayout>

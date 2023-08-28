@@ -20,14 +20,15 @@ namespace Splash_Screen.Models
         
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
         public string Map { get; set; }
         public string Difficulty { get; set; }
         public double ScoreMultiplier { get; set; }
         public int Level { get; set; }
         public int Score { get; set; }
+        public int Lives { get; set; }
         public int Problems { get; set; }
-        public double TotalTime { get; set; }
+        public string TotalTime { get; set; }
         public int Streak { get; set; }
     }
 }

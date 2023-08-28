@@ -3,202 +3,219 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Splash_Screen.Views.PracticeGamePage">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="{StaticResource Key=backGroundColor1}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
-            <Frame HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10,10,10,10" BackgroundColor="{StaticResource Key=backGroundColor2}">
-                <Grid Margin="10,10,10,10">
-                    <Grid.ColumnDefinitions>
+        <StackLayout BackgroundColor="{StaticResource Key=backGroundColor1}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10" >
+            <Grid>
+                <Grid.ColumnDefinitions>
 
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="300"/>
-                        <RowDefinition Height="400"/>
-                    </Grid.RowDefinitions>
-
-                    <StackLayout Grid.Row="0">
-                        <Grid>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" BackgroundColor="{StaticResource Key=backGroundColor2}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
+                        <Grid >
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
+
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="2"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="2"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="2"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="2"/>
+                                <RowDefinition Height="300"/>
+                                <RowDefinition Height="400"/>
                             </Grid.RowDefinitions>
 
                             <StackLayout Grid.Row="0">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition Width="2"/>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition Width="2"/>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition Width="2"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="65"/>
+                                        <RowDefinition Height="65"/>
+                                        <RowDefinition Height="35"/>
+                                        <RowDefinition Height="65"/>
                                     </Grid.RowDefinitions>
 
-                                    <StackLayout Grid.Column="0">
+                                    <StackLayout Grid.Row="0" >
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" CornerRadius="10"  BorderColor="{StaticResource Key=borderColor}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
 
-                                        <Label Text="000" FontSize="35" TextColor="White" x:Name="ProblemsDoneLabel" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                                        <Label Text="Problems Done" FontSize="Caption" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                                    </StackLayout>
-                                    
-                                    <BoxView  Color="Black" Grid.Column="1" />
-                                    
-                                    <StackLayout Grid.Column="2">
-                                        <Label Text="Wrong" FontSize="20" x:Name="ResponseLabel" TextColor="Red"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                                        
-                                    </StackLayout>
-                                    <BoxView  Color="Black" Grid.Column="3" />
-                                    <StackLayout Grid.Column="4">
-                                        <Label Text="000" FontSize="35" x:Name="StreakLabel" TextColor="White"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                <StackLayout Grid.Column="0" Margin="-20,-15,0,0">
 
-                                        <Label Text="Streak" FontSize="Caption" TextColor="White" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                                    </StackLayout>
+                                                    <Label Text="{Binding Problems}"  FontSize="25" TextColor="{StaticResource Key=textColor}" x:Name="ProblemsDoneLabel" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                    <Label Text="Completed" FontSize="Caption" TextColor="{StaticResource Key=textColor}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                </StackLayout>
 
+
+
+                                                <StackLayout Grid.Column="1" Margin="-30,-15,0,0">
+                                                    <Label Text="Wrong" FontSize="25" x:Name="ResponseLabel" TextColor="Red"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+                                                </StackLayout>
+
+                                                <StackLayout Grid.Column="2" Margin="-50,-15,0,0">
+                                                    <Label Text="{Binding Streak}" FontSize="25" x:Name="StreakLabel" TextColor="{StaticResource Key=textColor}"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+                                                    <Label Text="Streak" FontSize="Caption" TextColor="{StaticResource Key=textColor}" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                </StackLayout>
+
+                                            </Grid>
+                                        </Frame>
+
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="1">
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}"  VerticalOptions="FillAndExpand">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                    <ColumnDefinition Width="100"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*"/>
+                                                </Grid.RowDefinitions>
+
+                                                <StackLayout Grid.Column="0" Margin="-10,-15,0,0">
+
+                                                <Label Text="{Binding Incorrect}" FontSize="25" x:Name="ProblemsIncorrectLabel" TextColor="Red"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                    <Label Text="# Incorrect" FontSize="Caption"  TextColor="{StaticResource Key=textColor}"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                </StackLayout>
+
+
+                                                <StackLayout Grid.Column="1" Margin="-20,-15,0,-0">
+                                                    <Label Text="{Binding Correct}" FontSize="25" x:Name="ProblemsCorrectLabel" TextColor="LawnGreen"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                    <Label Text="#Correct" FontSize="Caption" TextColor="{StaticResource Key=textColor}"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                </StackLayout>
+                                                <StackLayout Grid.Column="2" Margin="-40,-15,0,-0">
+                                                <Label Text="{Binding Skipped}" FontSize="25" x:Name="ProblemsSkippedLabel" TextColor="{StaticResource Key=backGroundColor2}"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                    <Label Text="# Skipped" FontSize="Caption" TextColor="{StaticResource Key=textColor}"   FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+                                                </StackLayout>
+
+                                            </Grid>
+                                        </Frame>
+
+
+                                    </StackLayout>
+                                    <StackLayout  Grid.Row="2" >
+                                        <Frame  Padding="1,1,1,1" CornerRadius="10"  BorderColor="{StaticResource Key=borderColor}" BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                <!--EQUATION-->
+                                                <Label Text="{Binding Num1}" x:Name="num1" FontSize="25" TextColor="{StaticResource Key=textColor}"  />
+                                                <Label  Text="{Binding Operand}" x:Name="Operation" FontSize="25" TextColor="{StaticResource Key=textColor}" />
+                                                <Label  Text="{Binding Num2}" x:Name="num2" FontSize="25" TextColor="{StaticResource Key=textColor}" Padding="0,0,0,0"/>
+                                            </StackLayout>
+
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout Grid.Row="3" >
+
+                                        <Frame CornerRadius="10" BorderColor="{StaticResource Key=borderColor}" BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                            <Button Text="Skip" FontSize="25" TextColor="{StaticResource Key=textColor}" x:Name="skip" FontAttributes="Bold" CornerRadius="10" BackgroundColor="{StaticResource Key=backGroundColor4}" Command="{Binding SkippedButtonCommand}" Clicked="Skip"/>
+                                                <Button Text="Review" FontSize="25" TextColor="{StaticResource Key=textColor}" x:Name="review" FontAttributes="Bold" CornerRadius="10" BackgroundColor="{StaticResource Key=backGroundColor4}" Command="{Binding ReviewButtonCommand}" />
+                                            </StackLayout>
+                                        </Frame>
+
+                                    </StackLayout>
                                 </Grid>
                             </StackLayout>
-                            <BoxView  Color="Black" Grid.Row="1" />
-                            <StackLayout Grid.Row="2">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition Width="2"/>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition Width="2"/>
-                                        <ColumnDefinition Width="100"/>
-                                        <ColumnDefinition Width="2"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
 
-                                    <StackLayout Grid.Column="0">
 
-                                        <Label Text="000" FontSize="35" x:Name="ProblemsIncorrectLabel" TextColor="Red"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                                        <Label Text="# Incorrect" FontSize="Caption"  TextColor="White"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                                    </StackLayout>
 
-                                    <BoxView  Color="Black" Grid.Column="1" />
-
-                                    <StackLayout Grid.Column="2">
-                                        <Label Text="000" FontSize="35" x:Name="ProblemsCorrectLabel" TextColor="LawnGreen"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                                        <Label Text="#Correct" FontSize="Caption" TextColor="White"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                                    </StackLayout>
-                                    <BoxView  Color="Black" Grid.Column="3" />
-                                    <StackLayout Grid.Column="4">
-                                        <Label Text="000" FontSize="35" x:Name="ProblemsSkippedLabel" TextColor="Blue"  FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                                        <Label Text="# Skipped" FontSize="Caption" TextColor="White"   FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
-                                    </StackLayout>
-
-                                </Grid>
-
-                            </StackLayout>
-                            <BoxView  Color="Black" Grid.Row="3" />
-                            <StackLayout Grid.Row="4" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-
-                                <Label Text="524" FontSize="35" TextColor="White" x:Name="num1" FontAttributes="Bold"/>
-                                <Label Text=" + " FontSize="35" TextColor="White" x:Name="Operation" FontAttributes="Bold"/>
-                                <Label Text="54" FontSize="35" TextColor="White" x:Name="num2" FontAttributes="Bold" />
-                            </StackLayout>
-                            <BoxView  Color="Black" Grid.Row="5" />
-                            <StackLayout Grid.Row="6" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-
-                                
-                                <Button Text="Skip" FontSize="35" TextColor="White" x:Name="skip" FontAttributes="Bold" BackgroundColor="{StaticResource Key=backGroundColor4}" Clicked="SkipButton_Clicked"/>
-                                <Button Text="Review" FontSize="35" TextColor="White" x:Name="review" FontAttributes="Bold" BackgroundColor="{StaticResource Key=backGroundColor4}" Clicked="ReviewButton_Clicked" />
-                            </StackLayout>
                         </Grid>
-                    </StackLayout>
 
-                    <Frame Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BorderColor="Black" BackgroundColor="{StaticResource Key=backGroundColor3}">
-                        <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-
-                            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" x:Name="adult" >
-                                <Grid.Resources>
-                                    <ResourceDictionary>
-                                        <Style TargetType="Button">
-                                            <Setter Property="FontSize" Value="25" />
-                                            <Setter Property="FontAttributes" Value="Bold" />
-                                            <Setter Property="BorderWidth" Value="4" />
-                                            <Setter Property="BorderColor" Value="Black" />
-                                        </Style>
-                                    </ResourceDictionary>
-                                </Grid.Resources>
-                                <Label Text="{Binding Entry}" TextColor="Black"
-                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"
-                   FontSize="32"
-                   x:Name="AnswerBox"
-                           BackgroundColor="White"
-                   LineBreakMode="HeadTruncation"
-                   VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="End" />
-
-                                <Button Text="CLEAR"
-                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                    Clicked="OnClearButtonClicked" />
-
-                                <Button Text="&#x21E6;"
-                    Grid.Row="1" Grid.Column="2" x:Name="backspaceButton"
-                   Clicked="OnBackspaceButtonClicked" />
-
-                                <Button Text="7"
-                    Grid.Row="2" Grid.Column="0"
-                    Clicked="OnDigitButtonClicked" StyleId="7" />
-
-                                <Button Text="8"
-                    Grid.Row="2" Grid.Column="1"
-                   Clicked="OnDigitButtonClicked" StyleId="8"/>
-
-                                <Button Text="9"
-                    Grid.Row="2" Grid.Column="2"
-                    Clicked="OnDigitButtonClicked" StyleId="9" />
-
-                                <Button Text="4"
-                    Grid.Row="3" Grid.Column="0"
-                    Clicked="OnDigitButtonClicked" StyleId="4" />
-
-                                <Button Text="5"
-                    Grid.Row="3" Grid.Column="1"
-                    Clicked="OnDigitButtonClicked" StyleId="5" />
-
-                                <Button Text="6"
-                    Grid.Row="3" Grid.Column="2"
-                    Clicked="OnDigitButtonClicked" StyleId="6"/>
-
-                                <Button Text="1"
-                    Grid.Row="4" Grid.Column="0"
-                    Clicked="OnDigitButtonClicked" StyleId="1"/>
-
-                                <Button Text="2"
-                    Grid.Row="4" Grid.Column="1"
-                    Clicked="OnDigitButtonClicked" StyleId="2"/>
-
-                                <Button Text="3"
-                    Grid.Row="4" Grid.Column="2"
-                    Clicked="OnDigitButtonClicked" StyleId="3"/>
-
-                                <Button Text="0"
-                    Grid.Row="5" Grid.Column="0" 
-                    Clicked="OnDigitButtonClicked" StyleId="0"/>
-
-                                <Button Text="Submit"
-                    Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
-                                    Clicked="SubmitButton_Clicked"                     />
-                            </Grid>
-                        </StackLayout>
                     </Frame>
 
-                </Grid>
+                <Frame Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BorderColor="{StaticResource Key=borderColor}" BackgroundColor="{StaticResource Key=backGroundColor2}" CornerRadius="10">
+                    <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
 
-            </Frame>
+
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                            <Grid.Resources>
+                                <ResourceDictionary>
+                                    <Style TargetType="Button">
+                                        <Setter Property="FontSize" Value="25" />
+                                        <Setter Property="FontAttributes" Value="Bold" />
+                                        <Setter Property="BorderWidth" Value="4" />
+                                        <Setter Property="BorderColor" Value="Black" />
+                                    </Style>
+                                </ResourceDictionary>
+                            </Grid.Resources>
+                            <Frame Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BorderColor="{StaticResource Key=borderColor}" CornerRadius="10">
+                                <Label Text="{Binding AnswerBox, Mode=TwoWay}" TextColor="{StaticResource Key=textColor}"
+                   
+                                            FontSize="32"
+                                            x:Name="AnswerBox"
+                                            BackgroundColor="{StaticResource Key=AnswerBoxColor}"
+                                            LineBreakMode="HeadTruncation"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalTextAlignment="End" />
+                            </Frame>
+
+
+                            <Button Text="CLEAR"
+                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                    Clicked="OnClearButtonClicked" CornerRadius="10"/>
+
+                            <Button Text="&#x21E6;"
+                    Grid.Row="1" Grid.Column="2" x:Name="backspaceButton"
+                   Clicked="OnBackspaceButtonClicked" CornerRadius="10"/>
+
+                            <Button Text="7"
+                    Grid.Row="2" Grid.Column="0"
+                    Clicked="OnDigitButtonClicked" StyleId="7" CornerRadius="10"/>
+
+                            <Button Text="8"
+                    Grid.Row="2" Grid.Column="1"
+                   Clicked="OnDigitButtonClicked" StyleId="8" CornerRadius="10"/>
+
+                            <Button Text="9"
+                    Grid.Row="2" Grid.Column="2"
+                    Clicked="OnDigitButtonClicked" StyleId="9" CornerRadius="10"/>
+
+                            <Button Text="4"
+                    Grid.Row="3" Grid.Column="0"
+                    Clicked="OnDigitButtonClicked" StyleId="4" CornerRadius="10"/>
+
+                            <Button Text="5"
+                    Grid.Row="3" Grid.Column="1" CornerRadius="10"
+                    Clicked="OnDigitButtonClicked" StyleId="5" />
+
+                            <Button Text="6"
+                    Grid.Row="3" Grid.Column="2" CornerRadius="10"
+                    Clicked="OnDigitButtonClicked" StyleId="6"/>
+
+                            <Button Text="1"
+                    Grid.Row="4" Grid.Column="0" CornerRadius="10"
+                    Clicked="OnDigitButtonClicked" StyleId="1"/>
+
+                            <Button Text="2"
+                    Grid.Row="4" Grid.Column="1" CornerRadius="10"
+                    Clicked="OnDigitButtonClicked" StyleId="2"/>
+
+                            <Button Text="3"
+                    Grid.Row="4" Grid.Column="2" CornerRadius="10"
+                    Clicked="OnDigitButtonClicked" StyleId="3"/>
+
+                            <Button Text="0"
+                    Grid.Row="5" Grid.Column="0" CornerRadius="10"
+                    Clicked="OnDigitButtonClicked" StyleId="0"/>
+
+                            <Button Text="Submit"
+                    Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"
+                     Command="{Binding SubmitButtonCommand}" CornerRadius="10"/>
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </Grid>
         </StackLayout>
+
     </ContentPage.Content>
 </ContentPage>

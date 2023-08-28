@@ -8,7 +8,7 @@
                 <Button Text="New Game" x:Name="NewGameButton" Clicked="NewGameButton_Clicked" BackgroundColor="Cyan" />
                 <Button Text="Main Menu" x:Name="MainMenuButton" Clicked="MainMenuButton_Clicked" BackgroundColor="Aquamarine"/>
             </StackLayout>
-            <ListView x:Name ="lstView" IsGroupingEnabled="true" GroupDisplayBinding="{Binding LongProblem}" GroupShortNameBinding="{Binding ShortProblem}">
+            <ListView x:Name ="lstView" IsGroupingEnabled="true" GroupDisplayBinding="{Binding LongProblem}" GroupShortNameBinding="{Binding ShortProblem}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding Problem}" Detail = "{Binding Answer}" d:Detail ="{Binding UserAnswer}"/>

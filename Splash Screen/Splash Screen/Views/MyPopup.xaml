@@ -10,7 +10,7 @@
            >
     <StackLayout>
         
-        <Label Text="Game Over" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="25" TextColor="Black"/>
+        <Label Text="Game Over" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="25" TextColor="{StaticResource Key=textColor}"/>
         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand">
             <Grid>
 
@@ -34,26 +34,26 @@
 
 
 
-                <Label Text="Results" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="25" TextColor="Black" Grid.Row="1" Grid.ColumnSpan="2"/>
+                <Label Text="Results" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="25" TextColor="{StaticResource Key=textColor}" Grid.Row="1" Grid.ColumnSpan="2"/>
                 
                 <StackLayout Grid.Row="2" Grid.Column="0">
-                    <Label Text="000000"  x:Name="userScore"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="Black" />
-                    <Label Text="Score" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="Black"/>
+                    <Label Text="000000"  x:Name="userScore"  HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="{StaticResource Key=textColor}" />
+                    <Label Text="Score" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="{StaticResource Key=textColor}"/>
                 </StackLayout>
                 <StackLayout Grid.Row="2" Grid.Column="1">
-                    <Label Text="000" x:Name="userTotalProblems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="Black" />
-                    <Label Text="Problems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="Black"/>
+                    <Label Text="000" x:Name="userTotalProblems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="{StaticResource Key=textColor}" />
+                    <Label Text="Problems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="{StaticResource Key=textColor}"/>
                 </StackLayout>
 
-                <Label Text="Highest Record" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="25" TextColor="Black" Grid.Row="3" Grid.ColumnSpan="2"/>
+                <Label Text="Highest Record" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="25" TextColor="{StaticResource Key=textColor}" Grid.Row="3" Grid.ColumnSpan="2"/>
                 
                 <StackLayout Grid.Row="4" Grid.Column="0">
-                    <Label Text="000000" x:Name="HighestScore" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="Black" />
-                    <Label Text="Score" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="Black"/>
+                    <Label Text="000000" x:Name="HighestScore" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="{StaticResource Key=textColor}" />
+                    <Label Text="Score" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="{StaticResource Key=textColor}"/>
                 </StackLayout>
                 <StackLayout Grid.Row="4" Grid.Column="1">
-                    <Label Text="000" x:Name="HighestProblems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="Black" />
-                    <Label Text="Problems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="Black"/>
+                    <Label Text="000" x:Name="HighestProblems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="15" TextColor="{StaticResource Key=textColor}" />
+                    <Label Text="Problems" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"  FontSize="Caption" TextColor="{StaticResource Key=textColor}"/>
                 </StackLayout>
 
 

@@ -26,7 +26,7 @@ namespace Splash_Screen.Views
             }
             else
             {
-                PracticeGameModel model = new PracticeGameModel
+                PracticeGame model = new PracticeGame 
                 {
 
                     //int range1;
