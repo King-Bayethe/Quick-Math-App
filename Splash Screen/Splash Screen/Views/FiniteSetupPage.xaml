@@ -4,16 +4,34 @@
              x:Class="Splash_Screen.Views.FiniteSetupPage" Title="Competitive">
     <ContentPage.Content>
         <StackLayout BackgroundColor="{StaticResource Key=backGroundColor1 }">
+            <Frame BackgroundColor="{StaticResource Key=backGroundColor2}" >
+                <StackLayout>
+                    <Label  FontSize="45"
+                     VerticalOptions="EndAndExpand"
+                     HorizontalOptions="CenterAndExpand"
+                     HorizontalTextAlignment="Center"
+                     FontFamily="PatrickFont" FontAttributes="Bold">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="QUICK " TextColor="{StaticResource Key=textColor}" />
+                                <Span Text="MATH" TextColor="{StaticResource Key=textColor}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Text="The Mastery of Speed" TextColor="{StaticResource Key=textColor}" FontSize="20" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+            </Frame>
             <StackLayout Padding="10" VerticalOptions="Center">
-            <Frame BackgroundColor="{StaticResource Key=backGroundColor2}">
-                <TableView HasUnevenRows="true" Grid.Column="0">
+                <Frame BackgroundColor="{StaticResource Key=backGroundColor2}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}">
+                <TableView HasUnevenRows="true" Grid.Column="0" >
                     <TableRoot>
-                        <TableSection Title="MAP" TextColor="White">
+                        <TableSection Title="MAP" TextColor="{StaticResource Key=textColor}" >
                             <ViewCell>
                                 <StackLayout>
-                                    <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" >
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" CornerRadius="10" BorderColor="{StaticResource Key=borderColor}" >
 
-                                        <Picker Title="Select an Operation" TitleColor="White" x:Name="mapFiniteSelector">
+                                        <Picker Title="Select an Operation" TitleColor="{StaticResource Key=textColor}" x:Name="mapFiniteSelector">
                                             <Picker.Items>
                                                 <x:String>Addition</x:String>
                                                 <x:String>Subtraction</x:String>
@@ -30,10 +48,10 @@
 
                             </ViewCell>
                         </TableSection>
-                        <TableSection Title="LEVEL" TextColor="White">
+                        <TableSection Title="LEVEL" TextColor="{StaticResource Key=textColor}">
                             <ViewCell>
                                 <StackLayout>
-                                    <Frame BackgroundColor="{StaticResource Key=backGroundColor3}">
+                                        <Frame BackgroundColor="{StaticResource Key=backGroundColor3}" BorderColor="{StaticResource Key=borderColor}" CornerRadius="10" >
                                         <controls:StepperWithEntry
                     HorizontalOptions="Center"
                     MaximumValue="{Binding MaximumValue}"
@@ -52,7 +70,7 @@
                 </TableView>
             </Frame>
 
-            <Button Text="Start" x:Name="StartButton" TextColor="White" BackgroundColor="Red" Clicked="FiniteStartButton_Clicked"/>
+            <Button Text="Start" x:Name="StartButton" TextColor="{StaticResource Key=textColor}" BackgroundColor="{StaticResource Key=backGroundColor2}" Clicked="FiniteStartButton_Clicked" CornerRadius="10"/>
         </StackLayout>
         </StackLayout>
         

@@ -73,7 +73,7 @@ namespace Splash_Screen.Controls
                 PlaceholderColor = Color.Gray,
                 Keyboard = Keyboard.Numeric,
                 HorizontalTextAlignment = TextAlignment.Center,
-                TextColor = Color.White,
+                TextColor = Color.FromRgb(94, 230, 0),
                 WidthRequest = 60,
                 BackgroundColor = Color.Transparent
             };

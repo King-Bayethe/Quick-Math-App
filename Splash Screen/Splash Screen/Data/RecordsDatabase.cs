@@ -10,16 +10,15 @@ using static SQLite.SQLite3;
 
 namespace Splash_Screen.Data
 {
-    class RecordsDatabase
+    public class RecordsDatabase
     {
-        static SQLiteAsyncConnection Database;
+        private readonly SQLiteAsyncConnection Database;
 
-        public static readonly AsyncLazy<RecordsDatabase> Instance = new AsyncLazy<RecordsDatabase>(async () =>
+        public RecordsDatabase(string dbPath)
         {
-            var instance = new RecordsDatabase();
-            CreateTableResult result = await Database.CreateTableAsync<Records>();
-            return instance;
-        });
+            Database = new SQLiteAsyncConnection(dbPath);
+            Database.CreateTableAsync<Records>();
+        }
 
         public RecordsDatabase()
         {
@@ -50,7 +49,7 @@ namespace Splash_Screen.Data
         }
         
 
-public Task<Records> GetgameAsync(int id)
+/*public Task<Records> GetGameAsync(int id)
         {
             return Database.Table<Records>().Where(i => i.GameID == id).FirstOrDefaultAsync();
         }
@@ -65,7 +64,7 @@ public Task<Records> GetgameAsync(int id)
             {
                 return Database.InsertAsync(game);
             }
-        }
+        }*/
 
         public Task<int> DeletegameAsync(Records game)
         {

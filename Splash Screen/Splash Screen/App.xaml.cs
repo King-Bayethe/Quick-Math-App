@@ -25,7 +25,7 @@ namespace Splash_Screen
 
                 return database;
             }
-        }/*
+        }
         private static InfiniteGameDatabase database2;
 
         public static InfiniteGameDatabase InfiniteGameDatabase
@@ -40,6 +40,20 @@ namespace Splash_Screen
                 return database2;
             }
         }
+        private static GamesHistoryDatabase database3;
+
+        public static GamesHistoryDatabase GamesHistoryDatabase
+        {
+            get
+            {
+                if (database3 == null)
+                {
+                    database3 = new GamesHistoryDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "GameHistory.db3"));
+                }
+
+                return database3;
+            }
+        }/*
         private static PracticeGameDatabase database3;
 
         public static PracticeGameDatabase PracticeGameDatabase

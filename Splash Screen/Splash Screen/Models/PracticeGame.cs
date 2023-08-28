@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Splash_Screen.Models
 {
-    public class PracticeGameModel
+    public class PracticeGame
     {
         public int Range1 { get; set; }
         public int Range2 { get; set; }

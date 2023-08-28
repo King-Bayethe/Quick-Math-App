@@ -1,46 +1,37 @@
 ﻿using Azure;
-using Microsoft.IdentityModel.Tokens;
 using Splash_Screen.Models;
 using Splash_Screen.Views;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Diagnostics;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Essentials;
+using Xamarin.Forms.Xaml;
 using Xamarin.Forms;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Splash_Screen.ViewModels
 {
-    public class FiniteGameViewModel : BaseViewModel
+    public class PracticeGameViewModel:BaseViewModel
     {
-        public ICommand CreateNoteCommand { protected set; get; }
         public ICommand SubmitButtonCommand { protected set; get; }
-        public ICommand BackCommand { protected set; get; }
+        public ICommand SkippedButtonCommand { protected set; get; }
+        public ICommand ReviewButtonCommand { protected set; get; }
         public INavigation Navigation { get; set; }
-        private string score,duration,problems,num1,num2,operand, level, answerbox;
-        //Setup Variables
-        private double value = 1.0;
+        public ICommand BackCommand { protected set; get; }
 
+        private int incorrect, correct, problems, skipped, streak;
+        private string num1, num2, operand, answerbox, response;
         private string operation;
-        Records high = new Records();
+        private int state = 0;
+        private int range1, range2;
+        ReviewModel record;
+        List<ReviewModel> ReviewList = new List<ReviewModel>();
         Random randomizer = new Random();
-        Stopwatch _stopwatch = new Stopwatch();
-        //Ranges
-        private int range1 = 1, range2 = 10, time = 20;
-        //Setup Variables
+        private string right = "Right", wrong = "Wrong";
 
-        //CONSTANT VARIABLES
-        private const int totalProblems = 100;
-        private const int addProblemValue = 250;
-        private const int subtractProblemValue = 500;
-        private const int multiplyProblemValue = 750;
-        private const int divideProblemValue = 1000;
-        private bool _GameInProgress;
-        private int bonus;
         //EQUATION
         int addend1,
             addend2,
@@ -54,209 +45,58 @@ namespace Splash_Screen.ViewModels
             sqrt,
             cube,
             cbrt;
-        private int problemsDone;
-        private int points;
-
-        public RecordFiniteGame Expense { get; set; }
-
-
-        public FiniteGameViewModel(FiniteGame note)
+        public PracticeGameViewModel(PracticeGame note)
         {
-            Level = note.Level.ToString();
-            operation = note.Map.ToString();
-            //Categories = new ObservableCollection<CategoryViewModel>();
-            //GetItems();
+
+            operation = note.Operation;
+            range1 = note.Range1;
+            range2 = note.Range2;
             Reset();
-            LevelSetup();
-            Scoring();
             Setup();
-            SubmitButtonCommand = new Command(SubmitButton);
+            SkippedButtonCommand = new Command(Skip);
+            ReviewButtonCommand = new Command(Review);
+            SubmitButtonCommand = new Command(Submit);
             BackCommand = new Command(Back);
 
         }
-        private void LevelSetup()
-        {
-            //Dependent on Level
-            range1 += Convert.ToInt32(level);
-            range2 += Convert.ToInt32(level);
-
-
-        }
-
         
-
-        private void Reset()
+        public int Incorrect
         {
-            //DISPLAY
-            Score = " ";
-            Problems = " ";
-            Duration = "00:00:20";
-            //VARIABLES
-            problemsDone = 0;
-            points = 0;
-            _stopwatch.Reset();
-
-        }
-        private void Back()
-        {
-            Navigation.PopAsync();
-        }
-        private void Scoring()
-        {
-            bonus = 50;
-            // To Load the high scores
-
-        }
-        public async void StartTimer()
-        {
-
-
-            // tick every second while game is in progress
-            while (_GameInProgress)
-            {
-
-
-                if (time == 0)
-                {
-                    // If the user ran out of time, stop the timer, show
-                    // a MessageBox, and fill in the answers.
-                    //timer1.Stop();
-                    _GameInProgress = false;
-                    _stopwatch.Stop();
-                    RecordStats();
-                    //MessageBox.Show("Time's up! Sorry, you didn't finish in time. Here are your results:");
-
-                    //Open up View Results
-                    //FinalStats();
-                    //ViewResultsPage vr = new ViewResultsPage(store);
-                    //await Navigation.PushAsync(vr);
-                }
-                if (problemsDone > totalProblems)
-                {
-                    // If the user ran out of time, stop the timer, show
-                    // a MessageBox, and fill in the answers.
-                    //timer1.Stop();
-                    _GameInProgress = false;
-                    _stopwatch.Stop();
-                    RecordStats();
-                    //MessageBox.Show("You finished. Here are your results:");
-
-                    //Open up View Results
-                    // FinalStats();
-                    //ViewResultsPage vr = new ViewResultsPage(store);
-                    //await Navigation.PushAsync(vr);
-                }
-                if (!_GameInProgress)
-                {
-                    // If the user ran out of time, stop the timer, show
-                    // a MessageBox, and fill in the answers.
-                    //timer1.Stop();
-
-                    RecordStats();
-                    //MessageBox.Show("You finished. Here are your results:");
-
-                    //Open up View Results
-                    // FinalStats();
-                    //ViewResultsPage vr = new ViewResultsPage(store);
-                    //await Navigation.PushAsync(vr);
-                }
-                else
-                {
-                    await Task.Delay(1000);
-                    time--;
-                    value -= 0.05;
-                    Duration = TimeSpan.FromSeconds(time).ToString(@"hh\:mm\:ss");
-                    ProgressBar = value;
-                }
-
-
-
-            }
-
-        }
-        private void SubmitButton()
-        {
-            /*
-            * 1. enter key to submit//////111
-            * 2. store2 problem ////111
-            * 3. store2 user answer /////111
-            * 4. check user answer  ////111
-            * 5. store2 correct answer ==switch///
-            * 6. display next problem////111
-           */
-            // Record
-            //Record();
-
-            //Check Answer
-            if (!AnswerBox.Equals("") )
-            {
-                if (CheckAnswer())
-                {
-                    points += Reward();
-                    problemsDone++;
-                    // display
-                    //1. Score
-                    Score = points.ToString();
-                    //3.Timer
-
-                    //6.problems left
-                    Problems = problemsDone.ToString();
-                    Level = level.ToString();
-                    AnswerBox = "";
-                    //Generate next problem
-                    NextQuestion();
-                    Duration = "00:00:20";
-                    time = 20;
-                    value = 1.0;
-                    UpdateUI();
-                    //button clicked
-                }
-                else
-                {
-                    //Game Over
-                    _GameInProgress = false;
-                    _stopwatch.Stop();
-                    RecordStats();
-                }
-            }
-            else
-            {
-                //Game Over
-                
-                _GameInProgress = false;
-                _stopwatch.Stop();
-                RecordStats();
-            }
-
-        }
-        public string Score
-        {
-            get { return score; }
+            get { return incorrect; }
             set
             {
-                score = value;
-                OnPropertyChanged("Score");
+                incorrect = value;
+                OnPropertyChanged("Incorrect");
             }
         }
-        public double ProgressBar
+        public int Correct
         {
-            get { return value; }
+            get { return correct; }
             set
             {
-                this.value = value;
-                OnPropertyChanged("ProgressBar");
+                correct = value;
+                OnPropertyChanged("Correct");
             }
         }
-        public string Duration
+        public int Skipped
         {
-            get { return duration; }
+            get { return skipped; }
             set
             {
-                duration = value;
-                OnPropertyChanged("Duration");
+                skipped = value;
+                OnPropertyChanged("Skipped");
             }
         }
-        public string Problems
+        public int Streak
+        {
+            get { return streak; }
+            set
+            {
+                streak = value;
+                OnPropertyChanged("Streak");
+            }
+        }
+        public int Problems
         {
             get { return problems; }
             set
@@ -265,13 +105,13 @@ namespace Splash_Screen.ViewModels
                 OnPropertyChanged("Problems");
             }
         }
-        public string Level
+        public string Response
         {
-            get { return level; }
+            get { return response; }
             set
             {
-                level = value;
-                OnPropertyChanged("Level");
+                response = value;
+                OnPropertyChanged("Response");
             }
         }
         public string Num1
@@ -303,16 +143,108 @@ namespace Splash_Screen.ViewModels
         }
         public string AnswerBox
         {
-            get 
-            { 
-                
-                return answerbox; 
+            get
+            {
+
+                return answerbox;
             }
             set
             {
                 answerbox = value;
                 OnPropertyChanged("AnswerBox");
             }
+        }
+       
+        
+        private async void Skip()
+        {
+            state = 1;
+            Skipped++;
+            NextQuestion();
+        }
+        private async void Review()
+        {
+            await Navigation.PushAsync(new ReviewPage(ReviewList));
+
+        }
+        private void Back()
+        {
+            Navigation.PopAsync();
+        }
+        private async void Submit()
+        {
+            if (!AnswerBox.IsNullOrEmpty() && CheckAnswer())
+            {
+
+                Problems++;
+                Correct++;
+                Streak++;
+                state = 1;
+
+                string problem = Num1 + " " + Operand + " " + Num2;
+                string answer = GetAnswer().ToString();
+                string userAnswer = AnswerBox;
+                ReviewList.Add(new ReviewModel(problem, answer, true, userAnswer));
+                AnswerBox = "";
+                 Response = right;
+                //ResponseLabel.TextColor = Color.LawnGreen;
+                await Task.Delay(1500);
+                NextQuestion();
+
+            }
+            else
+            {
+
+
+                if (state == 1)
+                {
+                    Streak = 0;
+                    Incorrect++;
+                    
+                    string problem = Num1 + " " + Operand + " " + Num2;
+                    string answer = GetAnswer().ToString();
+                    string userAnswer = AnswerBox;
+
+                    Review store = new Review();
+                    ReviewList.Add(new ReviewModel(problem, answer, false, userAnswer));
+                    //record.UserAnswer.Add(AnswerBox.Text);
+                    //record.CorrectAnswer.Add(GetAnswer().ToString());
+                    store.Equation.Add(problem + " = " + GetAnswer().ToString() + "; NOT: " + AnswerBox);
+                    state = 2;
+                    AnswerBox = "";
+
+                }
+                Response = wrong;
+                //ResponseLabel.TextColor = Color.Red;
+
+            }
+
+        }
+        private void Reset()
+        {
+            //DISPLAY
+            //VARIABLES
+            Problems = 0;
+            Correct = 0;
+            Incorrect = 0;
+            Skipped = 0;
+            streak = 0;
+            // // Display number of problems left
+            Problems = 0;
+            //2. Answer Streak
+            Streak = 0;
+            //5.Correct problems
+            Correct = 0;
+            //6.problems left
+            Skipped = 0;
+            //7.incorrect problems
+            Incorrect = 0;
+
+            Response = "";
+
+            AnswerBox = "";
+
+
         }
         private void Setup()
         {
@@ -413,34 +345,16 @@ namespace Splash_Screen.ViewModels
                     break;
 
             }
-
-            // Display number of problems left
-            /*
-                1. userScore
-                3.  Timer
-                6.problems left
-
-             
-             */
-
-            //3.Timer
-            Duration = (time).ToString(@"hh\:mm\:ss");
-            //6.problems left
-            Level = level;
-            Problems = problemsDone.ToString();
-            points = 0;
-            Score = points.ToString();
-            // Start the timer.
-            _GameInProgress = true;
-            _stopwatch.Start();
-            StartTimer();
+            state = 1;
+            Response = "--------";
+            //ResponseLabel.TextColor = Color.Black;
         }
         public bool CheckAnswer()
         {
             switch (operation)
             {
                 case "Addition":
-                     if (addend1 + addend2 == Convert.ToInt32(AnswerBox))
+                    if (addend1 + addend2 == Convert.ToInt32(AnswerBox))
                         return true;
                     else
                         return false;
@@ -488,98 +402,10 @@ namespace Splash_Screen.ViewModels
 
             }
         }
-        async void RecordStats()
-        {
-
-
-            string totalTime = TimeSpan.FromSeconds(_stopwatch.Elapsed.TotalSeconds).ToString(@"hh\:mm\:ss");
-            string date = DateTime.Now.ToString("yyyy-MM-dd");
-            RecordFiniteGame game = new RecordFiniteGame
-            {
-
-                Date = date,
-                Map = operation,
-                Level = Convert.ToInt32(Level),
-                Score = points,
-                Problems = problemsDone,
-                TotalTime = totalTime,
-            };
-            await App.FiniteGameDatabase.SaveGameAsync(game);
-            SaveStats();
-
-
-            Navigation.ShowPopup(new MyPopup(game));
-
-        }
-
-        public void SaveStats()
-        {
-            string key = "highscore" + "_" + operation + "_CompetitiveMode";
-            string key2 = "duration" + "_" + operation + "_CompetitiveMode";
-            string key3 = "level" + "_" + operation + "_" + "CompetitiveMode";
-            string key4 = "bestMap" + "_" + operation + "_" + "CompetitiveMode";
-            
-            int oldScore = (Convert.ToInt32(Preferences.Get(key, "None")));
-            if (Convert.ToInt32(Score) > oldScore)
-            {
-                Preferences.Set(key, Score);
-                Preferences.Set(key4, operation);
-            }
-            string totalTime = TimeSpan.FromSeconds(_stopwatch.Elapsed.TotalSeconds).ToString(@"hh\:mm\:ss");
-            string oldDuration = Preferences.Get(key2, "None");
-            int hh = Convert.ToInt32(oldDuration.Substring(0, 2));
-            int mm = Convert.ToInt32(oldDuration.Substring(3, 2));
-            int ss = Convert.ToInt32(oldDuration.Substring(6, 2));
-            if (hh == _stopwatch.Elapsed.Hours)
-            {
-                if (mm == _stopwatch.Elapsed.Minutes)
-                {
-
-                    if (ss < _stopwatch.Elapsed.Seconds)
-                    {
-
-                        Preferences.Set(key2, totalTime);
-                    }
-                }
-                else
-                {
-                    if (mm < _stopwatch.Elapsed.Minutes)
-                    {
-
-                        Preferences.Set(key2, totalTime);
-                    }
-                }
-            }
-            else
-            {
-                if (hh < _stopwatch.Elapsed.Hours)
-                {
-
-                    Preferences.Set(key2, totalTime);
-                }
-
-            }
-            int oldLevel = (Convert.ToInt32(Preferences.Get(key3, 0)));
-            if (Convert.ToInt32(Level) > oldLevel)
-            {
-                Preferences.Set(key3, Level);
-            }
-        }
-        public void UpdateUI()
-        {
-            
-            OnPropertyChanged("Score");
-            OnPropertyChanged("Duration");
-            OnPropertyChanged("Problems");
-            OnPropertyChanged("ProgressBar");
-            //OnPropertyChanged("Operand");
-            OnPropertyChanged("Num1");
-            OnPropertyChanged("Num2");
-            OnPropertyChanged("Operand");
-        }
-
         public void NextQuestion()
         {
+            Response = "--------";
+            //ResponseLabel.TextColor = Color.Black;
             switch (operation)
             {
 
@@ -674,7 +500,6 @@ namespace Splash_Screen.ViewModels
 
             }
         }
-
         public int GetAnswer()
         {
             switch (operation)
@@ -712,88 +537,6 @@ namespace Splash_Screen.ViewModels
                     return 0;
 
             }
-        }
-         
-        public int Reward()
-        {
-            int reward = 0;
-
-            switch (operation)
-            {
-                case "Addition":
-                    reward += addProblemValue;
-                    break;
-                case "Subtraction":
-                    reward += subtractProblemValue;
-                    break;
-                case "Multiplication":
-                    reward += multiplyProblemValue;
-                    break;
-                case "Division":
-                    reward += divideProblemValue;
-                    break;
-                case "Squared":
-                    reward += 350;
-                    break;
-                case "Cubed":
-                    reward += 400;
-                    break;
-                case "Square Root":
-                    reward += 450;
-                    break;
-                case "Cube Root":
-                    reward += 450;
-                    break;
-                default:
-                    Console.WriteLine("Default case");
-                    break;
-            }
-            bonus++;
-            reward += Trigger() + bonus;
-            return reward;
-        }
-
-        public int Trigger()
-        {
-            int trigger = 0;
-            int answerSpeed = 20 - Convert.ToInt32(time);
-            //Quickness///
-            if (answerSpeed <= 2)
-            {
-                trigger += 100;
-            }
-            else if (answerSpeed <= 3)
-            {
-                trigger += 90;
-            }
-
-            else if (answerSpeed <= 4)
-            {
-                trigger += 80;
-            }
-            else if (answerSpeed <= 5)
-            {
-                trigger += 70;
-            }
-            else if (answerSpeed <= 6)
-            {
-                trigger += 60;
-            }
-            else if (answerSpeed <= 7)
-            {
-                trigger += 50;
-            }
-            else if (answerSpeed <= 8)
-            {
-                trigger += 40;
-            }
-            else if (answerSpeed <= 9)
-            {
-                trigger += 30;
-            }
-            else { trigger += 10; }
-            answerSpeed = 0;
-            return trigger;
         }
     }
 }

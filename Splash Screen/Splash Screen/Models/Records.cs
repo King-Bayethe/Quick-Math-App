@@ -5,21 +5,26 @@ using System.Text;
 
 namespace Splash_Screen.Models
 {
-    class Records
+    public class Records
     {
-        public string BestMap { get; set; }
+        public int ScoreCS { get; set; }
+        public int BestMapCS { get; set; }
+        public int DurationCS { get; set; }
+        public int LevelCS { get; set; }
+        public int ScoreIS { get; set; }
+        public int BestMapIS { get; set; }
+        public int DurationIS { get; set; }
+        public int LevelIS { get; set; }
+        public int ProblemsIS { get; set; }
+        public int DifficultyIS { get; set; }
+        public int StreakIS { get; set; }
+        public double ScoreMultiplierIS { get; set; }
 
-        public int GameID { get; set; }
-        public int HighestScore { get; set; }
 
-        public int HighScore { get; set; }
-        public double ShortestTime { get; set; }
-
-        public int MostProblems { get; set; }
         public List<string> Keys { get; }
         public Records()
         {
-            Keys = new List<string> {
+           Keys = new List<string> {
                 "highscore_Addition_InfiniteMode",  "level_Addition_InfiniteMode",  "duration_Addition_InfiniteMode",   "bestMap_Addition_InfiniteMode",    "problems_Addition_InfiniteMode",   "difficulty_Addition_InfiniteMode", "streak_Addition_InfiniteMode", "multiplier_Addition_InfiniteMode",
 "highscore_Subtraction_InfiniteMode",   "level_Subtraction_InfiniteMode",   "duration_Subtraction_InfiniteMode",    "bestMap_Subtraction_InfiniteMode", "problems_Subtraction_InfiniteMode",    "difficulty_Subtraction_InfiniteMode",  "streak_Subtraction_InfiniteMode",  "multiplier_Subtraction_InfiniteMode",
 "highscore_Multiplication_InfiniteMode",    "level_Multiplication_InfiniteMode",    "duration_Multiplication_InfiniteMode", "bestMap_Multiplication_InfiniteMode",  "problems_Multiplication_InfiniteMode", "difficulty_Multiplication_InfiniteMode",   "streak_Multiplication_InfiniteMode",   "multiplier_Multiplication_InfiniteMode",

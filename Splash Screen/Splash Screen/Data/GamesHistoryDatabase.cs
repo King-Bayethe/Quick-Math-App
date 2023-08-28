@@ -9,29 +9,54 @@ using Splash_Screen.Models;
 
 namespace Splash_Screen.Data
 {
-    class GamesHistoryDatabase
+    public class GamesHistoryDatabase
     {
-        static SQLiteAsyncConnection Database;
+        private readonly SQLiteAsyncConnection Database;
 
-        public static readonly AsyncLazy<GamesHistoryDatabase> Instance = new AsyncLazy<GamesHistoryDatabase>(async () =>
-        {
-            var instance = new GamesHistoryDatabase();
-            CreateTableResult result = await Database.CreateTableAsync<GamesHistory>();
-            return instance;
-        });
 
-        public GamesHistoryDatabase()
+        public GamesHistoryDatabase(string dbPath)
         {
-            Database = new SQLiteAsyncConnection(Constants.DatabasePath, Constants.Flags);
+            Database = new SQLiteAsyncConnection(dbPath);
+            Database.CreateTableAsync<GamesHistory>();
         }
 
-        public Task<List<GamesHistory>> GetItemsAsync()
+        //ALL GAMES
+        public Task<List<GamesHistory>> GetAllGamesAsync()
         {
             return Database.Table<GamesHistory>().ToListAsync();
-        }
-
-        public Task<List<GamesHistory>> GetItemsNotDoneAsync()
+        }/*
+        //COMPETITIVE GAMES ONLY
+        public Task<List<GamesHistory>> GetAllCompetitiveGamesAsync()
         {
+            
+        }
+        //INFINITE GAMES ONLY
+        public Task<List<GamesHistory>> GetAllInfiniteGamesAsync()
+        {
+            
+        }
+        //GAMES OF THIS OPERATION ONLY
+        public Task<List<GamesHistory>> GetAllGamesWithOperationAsync(string operation)
+        {
+            
+        }
+        //GAMES OF THIS LEVEL ONLY
+        public Task<List<GamesHistory>> GetAllGamesWithLevelAsync(int level)
+        {
+
+        }
+        //GAMES OF THIS DIFFICULTY ONLY
+        public Task<List<GamesHistory>> GetAllGamesWithDifficultyAsync(string difficulty)
+        {
+
+        }
+        //GAMES OF THIS MULTI ONLY
+        public Task<List<GamesHistory>> GetAllGamesMULTIAsync(string mode, string operation, string difficulty)
+        {
+
+        }*/
+        public Task<List<GamesHistory>> GetItemsNotDoneAsync()
+        { 
             return Database.QueryAsync<GamesHistory>("SELECT * FROM [GamesHistory] WHERE [Done] = 0");
         }
 
